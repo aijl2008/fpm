@@ -5,7 +5,7 @@ $pass = isset($_GET["password"]) ? $_GET["password"] : "123456";
 $db = isset($_GET["db"]) ? $_GET["db"] : "test";
 $table = isset($_GET["table"]) ? $_GET["table"] : "table";
 try{
-    $dbh = new PDO("mysql:host=$host;port=3306;dbname=$db;user=$user;password=$pass");
+    $dbh = new PDO("mysql:host=$host;port=3306;dbname=$db", $user, $pass);
     foreach ($dbh->query("select * from $table limit 100") as $item){
         print_r($item);
     }
